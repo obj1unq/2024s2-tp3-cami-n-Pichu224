@@ -91,10 +91,10 @@ object camion {
 }
  //  puedeCircularEnRuta //
 object ruta9 {
-  	const property nivelDePeligrosidad = 11
+  	const property nivelDePeligrosidad = 40
 
 	method validarPaso(vehiculo) {
-	  return vehiculo.puedeCircularEnRuta()
+	  return vehiculo.puedeCircularEnRuta(nivelDePeligrosidad)
 	}
 }
 
@@ -102,7 +102,7 @@ object caminosVecinales {
   	var property pesoAdmitible = 1500
 
  	method validarPaso(vehiculo) {
-	  return vehiculo.peso() < pesoAdmitible
+	  return vehiculo.pesoTotal() < pesoAdmitible
 	}
 }
 
