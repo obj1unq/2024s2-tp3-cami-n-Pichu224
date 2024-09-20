@@ -1,0 +1,30 @@
+import cosas.*
+import camion.*
+describe "camionTest" {
+  test "cargar y descargar camion" {
+    camion.cargar(bumblebee)
+    assert.equals(#{bumblebee}, camion.cosas())
+    camion.descargar(bumblebee)
+    assert.equals(#{}, camion.cosas())
+  }
+
+  test "peso par" {
+    camion.cargar(bumblebee)
+    assert.that(camion.todoPesoPar())
+    arenaAGranel.peso(1)
+    camion.cargar(arenaAGranel)
+    assert.notThat(camion.todoPesoPar())
+  }
+
+  test "hay alguno que pesa" {
+    camion.cargar(bumblebee)
+    assert.that(camion.hayAlgunoQuePesa(800))
+    assert.notThat(camion.hayAlgunoQuePesa(500))
+  }
+
+  test "el de nivel" {
+    camion.cargar(bumblebee)
+    assert.equals(bumblebee, camion.elDeNivel(30))
+    assert.equals(null , camion.elDeNivel(10))
+  }
+}
